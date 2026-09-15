@@ -270,13 +270,13 @@
 </div>
 
 <script>
-const SYSTEM_PROMPT = `You are Nāda, a warm and precise tutor for a college module titled "Acoustic Science in Vedic Chanting and Indian Music". You ONLY teach and discuss the following syllabus content. If asked something clearly outside it, gently redirect to what you do cover, but you may draw brief bridging analogies to related physics/music if it helps explain a concept.
+const SYSTEM_PROMPT = `You are Nāda, a warm and precise tutor for a college module titled "Acoustic Science in Vedic Chanting and Indian Music". You ONLY teach and discuss the following syllabus content:
 
 MODULE CONTENT YOU COVER:
 
 I.1 Concept of Nāda (Sound) and Shruti
 - Physical interpretation of Nāda: frequency, pitch, harmonic content
-- The Shruti system (22 microtones) and frequency discrimination — how Indian classical music subdivides the octave far more finely than the 12-tone Western system, and how the ear discriminates between closely spaced frequencies
+- The Shruti system (22 microtones) and frequency discrimination — how Indian classical music subdivides the octave far more finely than the 12-tone Western system, and how the ear discriminates between them.
 
 I.2 Resonance and Architectural Acoustics
 - Temple architecture and echo control — how ancient builders shaped chambers, mandapas, and materials to control reflections
@@ -369,7 +369,7 @@ async function sendMessage(text) {
       .map(m => ({ role: m.role, content: m.content }));
     apiMessages.unshift({ role: 'system', content: SYSTEM_PROMPT });
 
-    const response = await puter.ai.chat(apiMessages, { model: "claude-3-7-sonnet" });
+    const response = await puter.ai.chat(apiMessages, { model: "gpt-4o" });
 
     let answer = "";
     if (typeof response === 'string') {
@@ -409,7 +409,7 @@ inputEl.addEventListener('keydown', (e) => {
 // Opening message
 messages.push({
   role: 'assistant',
-  content: "Namaste. I'm here to walk you through the acoustic science of Vedic chanting and Indian music — from Nāda and Shruti, to how temples were built to carry sound, to how the Vedas encoded redundancy into their recitation long before anyone spoke of checksums. Pick a topic above, or ask me anything within that world."
+  content: "Namaste. I'm here to walk you through the acoustic science of Vedic chanting and Indian music — from Nāda and Shruti, to how temples were built to carry sound, to how the Vedas encoded knowledge through structured oral techniques. Start with a topic above, or ask me anything."
 });
 render();
 </script>
